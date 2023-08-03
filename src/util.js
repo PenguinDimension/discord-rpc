@@ -1,14 +1,20 @@
 'use strict';
 
 let register;
-try {
+
+/* try {
   const { app } = require('electron');
   register = app.setAsDefaultProtocolClient.bind(app);
 } catch (err) {
   try {
     register = require('register-scheme');
   } catch (e) {} // eslint-disable-line no-empty
-}
+} */
+
+try {
+  const { app } = require('electron');
+  register = app.setAsDefaultProtocolClient.bind(app);
+} catch (err) {}
 
 if (typeof register !== 'function') {
   register = () => false;
